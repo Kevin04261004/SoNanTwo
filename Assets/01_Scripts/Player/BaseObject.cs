@@ -10,6 +10,16 @@ namespace Kevin
         public bool isAlive { get; protected set; } = true;
         
         [Header("-----스텟-----")]
+        [Header("레벨")]
+        [ReadOnly(false)]
+        [Tooltip("현재 레벨")]
+        [SerializeField]
+        protected int CurLevel;
+        [ReadOnly(false)]
+        [Tooltip("현재 레벨")]
+        [SerializeField]
+        protected int MaxLevel;
+        
         [Header("체력")]
         [ReadOnly(false)]
         [Tooltip("기본 체력 (레벨에 따라 변경됨)")]
