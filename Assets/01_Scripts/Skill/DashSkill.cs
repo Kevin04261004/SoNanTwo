@@ -8,7 +8,7 @@ namespace Kevin
     {
         public override void UseSkill(GameObject parent)
         {
-            
+            print("dash");
         }
     }   
 }

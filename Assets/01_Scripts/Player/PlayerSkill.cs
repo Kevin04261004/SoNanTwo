@@ -8,7 +8,7 @@ namespace Kevin
     {
         [SerializeField] private UnityEvent OnClick_Q;
 
-        public void OnQSkill(InputValue inputValue)
+        public void OnQSkill()
         {
             OnClick_Q?.Invoke();
         }
