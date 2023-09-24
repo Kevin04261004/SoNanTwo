@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bcdb8a95ab19f45b68f8f563964720, type: 3}
+  m_Name: UmJunSick
+  m_EditorClassIdentifier: 
+  characterName: "\uC5C4\uC900\uC2DD"
+  baseHp:
+  - 100
+  - 120
+  - 140
+  - 160
+  - 180
+  baseMp:
+  - 100
+  - 105
+  - 110
+  - 115
+  - 120
+  baseAD:
+  - 20
+  - 22
+  - 24
+  - 26
+  - 28
+  baseAP:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  baseArmor:
+  - 10
+  - 12
+  - 14
+  - 16
+  - 18
+  baseMagicResistance:
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  baseCriticalPercent:
+  - 0
+  characterSpeed:
+  - 8
+  hpRegeneration:
+  - 4
+  - 4.1
+  - 4.4
+  - 4.7
+  - 5
