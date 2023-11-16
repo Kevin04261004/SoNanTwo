@@ -75,13 +75,16 @@ namespace StarterAssets
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
+        [Tooltip("Move Dir")] public Vector3 targetDirection;
+
+        [Tooltip("클릭")]public float inputMagnitude;
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
 
         // player
         private float _speed;
-        private float _animationBlend;
+        [SerializeField] private float _animationBlend;
         private float _targetRotation = 0.0f;
         private float _rotationVelocity;
         private float _verticalVelocity;
@@ -155,10 +158,19 @@ namespace StarterAssets
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
-
-            JumpAndGravity();
+            if (DataManager.Instance._isMyTurn)
+            {
+                Move();     
+            }
+            else
+            {
+                inputMagnitude = 0;
+                targetDirection = Vector3.zero;
+                _speed = 0;
+            }
             GroundedCheck();
-            Move();
+            JumpAndGravity();
+            RealMove();
         }
 
         private void LateUpdate()
@@ -226,7 +238,7 @@ namespace StarterAssets
             float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
             float speedOffset = 0.1f;
-            float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+            inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
             // accelerate or decelerate to target speed
             if (currentHorizontalSpeed < targetSpeed - speedOffset ||
@@ -265,12 +277,18 @@ namespace StarterAssets
             }
 
 
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
+
+
+            
+        }
+
+        private void RealMove()
+        {
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-
             // update animator if using character
             if (_hasAnimator)
             {
@@ -278,7 +296,6 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
-
         private void JumpAndGravity()
         {
             if (Grounded)
@@ -299,6 +316,10 @@ namespace StarterAssets
                     _verticalVelocity = -2f;
                 }
 
+                if (!DataManager.Instance._isMyTurn)
+                {
+                    return;
+                }
                 // Jump
                 if (_input.jump && _jumpTimeoutDelta <= 0.0f)
                 {
