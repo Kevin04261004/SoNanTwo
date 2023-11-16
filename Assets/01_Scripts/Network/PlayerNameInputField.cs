@@ -15,7 +15,6 @@ public class PlayerNameInputField : MonoBehaviour
     {
         string defaultName = String.Empty;
         _inputField = this.GetComponent<TMP_InputField>();
-<<<<<<< HEAD
         // if (_inputField != null)
         // {
         //     if (PlayerPrefs.HasKey(playerNamePrefKey))
@@ -24,16 +23,6 @@ public class PlayerNameInputField : MonoBehaviour
         //         _inputField.text = defaultName;
         //     }
         // }
-=======
-        if (_inputField != null)
-        {
-            if (PlayerPrefs.HasKey(playerNamePrefKey))
-            {
-                defaultName = PlayerPrefs.GetString(playerNamePrefKey);
-                _inputField.text = defaultName;
-            }
-        }
->>>>>>> a5cc017325a4ac5bf9b70b63911386b24f8c404c
 
         PhotonNetwork.NickName = defaultName;
     }
