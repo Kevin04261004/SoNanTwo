@@ -10,10 +10,10 @@ public class Launcher : MonoBehaviourPunCallbacks
 {
  [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
     [SerializeField]
-    private byte maxPlayersPerRoom;   
+    private byte maxPlayersPerRoom = 6;   
     private static readonly string GAMEVERSION = "1";
     private const string _roomSceneName = "K_RoomScene";
-    private bool isConnecting = false;
+    private bool isConnecting = true;
     private void Awake()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
