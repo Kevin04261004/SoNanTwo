@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class DataManager : MonoBehaviour
@@ -12,14 +13,18 @@ public class DataManager : MonoBehaviour
     private List<Player> players = new List<Player>();
     private int _turn = -1;
     private int _round = 0;
+    private float turnTime;
     private PhotonView PV;
+    public float baseTurnTime = 18f;
     public static DataManager Instance;
     public TextMeshProUGUI Round_TMP;
+    public TextMeshProUGUI TurnTime_TMP;
     public Button NextTurnButton;
     public Button StartGameButton;
     public GameObject PlayerListImage;
     public GameObject PlayerInfoButtonPrefab;
     [field: SerializeField] public bool _isMyTurn { get; private set; } = true;
+
     private void Awake()
     {
         if(Instance == null)
@@ -33,8 +38,33 @@ public class DataManager : MonoBehaviour
 
         PV = GetComponent<PhotonView>();
         DontDestroyOnLoad(gameObject);
+
+        turnTime = baseTurnTime;
     }
-    
+
+    IEnumerator TurnTimeCount()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(baseTurnTime);
+            EndTurn();
+        }
+    }
+
+    IEnumerator TimeTextUpdate()
+    {
+        while (true)
+        {
+            turnTime -= Time.deltaTime;
+            TurnTime_TMP.text = "TimeTurn : " + Mathf.Round(turnTime);
+            if (turnTime < 0)
+            {
+                turnTime = baseTurnTime;
+            }
+            yield return new WaitForFixedUpdate();
+        }
+    }
+
     public int FindMyPlayerIndex()
     {
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; ++i)
@@ -47,6 +77,7 @@ public class DataManager : MonoBehaviour
 
         return -1;
     }
+
     public void StartGame()
     {
         PV.RPC(nameof(StartGameRPC), RpcTarget.AllBuffered);
@@ -61,6 +92,7 @@ public class DataManager : MonoBehaviour
         }
         PV.RPC(nameof(TurnEndRPC), RpcTarget.AllBuffered);
     }
+
     public void SetPlayerList()
     {
         PV.RPC(nameof(SetPlayerListRPC), RpcTarget.AllBuffered);
@@ -79,7 +111,10 @@ public class DataManager : MonoBehaviour
         EndTurn();
         NextTurnButton.gameObject.SetActive(true);
         StartGameButton.gameObject.SetActive(false);
+        StartCoroutine(TurnTimeCount());
+        StartCoroutine(TimeTextUpdate());
     }
+
     [PunRPC]
     private void TurnEndRPC()
     {
@@ -89,6 +124,7 @@ public class DataManager : MonoBehaviour
             EndRound();
             _turn = 0;
         }
+
         if (FindMyPlayerIndex() == _turn)
         {
             _isMyTurn = true;
@@ -100,6 +136,7 @@ public class DataManager : MonoBehaviour
             NextTurnButton.gameObject.SetActive(false);
         }
     }
+
     [PunRPC]
     private void SetPlayerListRPC()
     {
