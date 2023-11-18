@@ -72,6 +72,10 @@ public class DataManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (gameStart)
+        {
+            return;
+        }
         PV.RPC(nameof(StartGameRPC), RpcTarget.AllBuffered);
     }
     
