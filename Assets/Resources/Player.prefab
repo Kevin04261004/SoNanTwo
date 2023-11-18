@@ -784,6 +784,7 @@ GameObject:
   - component: {fileID: 8319573238011843880}
   - component: {fileID: -5356196813239689154}
   - component: {fileID: 1493739461348082228}
+  - component: {fileID: 1056591471479151240}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -800,7 +801,7 @@ Transform:
   m_GameObject: {fileID: 3031524938635089987}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.833685, y: 5.0515485, z: 8.59781}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1111,6 +1112,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &1056591471479151240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3031524938635089987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de3805a00ea61b4daafbe7421f3e27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redBullet_Prefab: {fileID: 3595128772283694078, guid: 11d7a343b3162d4408627968be5651fe,
+    type: 3}
 --- !u!1 &3073071103744297614
 GameObject:
   m_ObjectHideFlags: 0
