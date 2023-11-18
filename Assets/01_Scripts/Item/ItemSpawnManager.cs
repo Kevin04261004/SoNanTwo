@@ -7,10 +7,10 @@ public class ItemSpawnManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject item;
-    private const float MAPTOP = 8.5f;
-    private const float MAPBOTTOM = -8.5f;
-    private const float MAPLEFT = -8.5f;
-    private const float MAPRIGHT = 8.5f;
+    [SerializeField] private float MAPTOP = 19f;
+    [SerializeField] private float MAPBOTTOM = -19f;
+    [SerializeField] private float MAPLEFT = -19f;
+    [SerializeField] private float MAPRIGHT = 19f;
     private Vector3 spawnPos;
 
     private void Update()
