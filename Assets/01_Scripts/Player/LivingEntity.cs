@@ -5,8 +5,8 @@ using UnityEngine;
 public class LivingEntity : MonoBehaviourPun, IDamageable
 {
     public float startingHealth = 100f;
-    public float health { get; protected set; }
-    public bool dead { get; protected set; }
+    [field:SerializeField] public float health { get; protected set; }
+    [field:SerializeField]  public bool dead { get; protected set; }
     public event Action onDeath;
 
     [PunRPC]
@@ -21,7 +21,7 @@ public class LivingEntity : MonoBehaviourPun, IDamageable
         dead = false;
         health = startingHealth;
     }
-
+    
     [PunRPC]
     public virtual void OnDamage(float damage)
     {
@@ -30,7 +30,7 @@ public class LivingEntity : MonoBehaviourPun, IDamageable
             health -= damage;
 
             //호스트에서 클라이언트로 동기화
-            photonView.RPC("ApplyUpdateHealth", RpcTarget.Others, health, damage);
+            photonView.RPC("ApplyUpdateHealth", RpcTarget.Others, health, dead);
 
             photonView.RPC("OnDamage", RpcTarget.Others, damage); // 다른 클라이언트도 실행
         }
