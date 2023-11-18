@@ -41,7 +41,7 @@ public class SkillShooter : MonoBehaviour
                 }
 
                 // ==== 실 패 작 ====
-                //transform.forward = new Vector3(hit.point.x, hit.point.y, hit.point.z) - transform.position;
+                //transform.forward = new Vector3(hit.point.x, hit.point.y, hit.point.z) - transform.position; 가장 완성에 가까웠으나 움직였을 때 문제있음
                 //transform.rotation = Quaternion.FromToRotation(transform.forward, new Vector3(hit.point.x, 0, hit.point.z));
                 //Vector3 dir = GetMousePositon() - transform.position;
                 //transform.rotation = Quaternion.Euler(0, Mathf.Atan2(dir.x, dir.) * Mathf.Rad2Deg, 0);
