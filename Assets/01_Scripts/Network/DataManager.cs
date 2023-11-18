@@ -98,11 +98,14 @@ public class DataManager : MonoBehaviour
     [PunRPC]
     private void StartGameRPC()
     {
-        gameStart = true;
-        _turn = PhotonNetwork.PlayerList.Length;
-        EndTurn();
-        NextTurnButton.gameObject.SetActive(true);
-        StartGameButton.gameObject.SetActive(false);
+        if (!gameStart)
+        {
+            gameStart = true;
+            _turn = PhotonNetwork.PlayerList.Length;
+            EndTurn();
+            NextTurnButton.gameObject.SetActive(true);
+            StartGameButton.gameObject.SetActive(false);
+        }
     }
 
     [PunRPC]
