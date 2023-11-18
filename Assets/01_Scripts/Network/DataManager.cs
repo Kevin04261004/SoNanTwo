@@ -15,6 +15,7 @@ public class DataManager : MonoBehaviour
     private int _round = 0;
     private float turnTime;
     private PhotonView PV;
+    private bool gameStart = false;
     public float baseTurnTime = 18f;
     public static DataManager Instance;
     public TextMeshProUGUI Round_TMP;
@@ -42,26 +43,17 @@ public class DataManager : MonoBehaviour
         turnTime = baseTurnTime;
     }
 
-    IEnumerator TurnTimeCount()
+    private void FixedUpdate()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(baseTurnTime);
-            EndTurn();
-        }
-    }
-
-    IEnumerator TimeTextUpdate()
-    {
-        while (true)
+        if (gameStart)
         {
             turnTime -= Time.deltaTime;
             TurnTime_TMP.text = "TimeTurn : " + Mathf.Round(turnTime);
             if (turnTime < 0)
             {
                 turnTime = baseTurnTime;
+                EndTurn();
             }
-            yield return new WaitForFixedUpdate();
         }
     }
 
@@ -83,7 +75,6 @@ public class DataManager : MonoBehaviour
         PV.RPC(nameof(StartGameRPC), RpcTarget.AllBuffered);
     }
     
-    /* 버튼 */
     public void EndTurn()
     {
         if (!_isMyTurn)
@@ -107,18 +98,18 @@ public class DataManager : MonoBehaviour
     [PunRPC]
     private void StartGameRPC()
     {
+        gameStart = true;
         _turn = PhotonNetwork.PlayerList.Length;
         EndTurn();
         NextTurnButton.gameObject.SetActive(true);
         StartGameButton.gameObject.SetActive(false);
-        StartCoroutine(TurnTimeCount());
-        StartCoroutine(TimeTextUpdate());
     }
 
     [PunRPC]
     private void TurnEndRPC()
     {
         _turn += 1;
+        turnTime = baseTurnTime;
         if (_turn >= PhotonNetwork.PlayerList.Length)
         {
             EndRound();
