@@ -14,11 +14,21 @@ public class SkillShooter : MonoBehaviour
 {
     private ESkillType skillType;
     [SerializeField] private GameObject redBullet_Prefab;
+    private PhotonView PV;
+
+    private void Awake()
+    {
+        TryGetComponent<PhotonView>(out PV);
+    }
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (PV.IsMine)
         {
-            UseSkill();
+            if (Input.GetMouseButtonDown(1))
+            {
+                UseSkill();
+            }   
         }
     }
 
