@@ -20,13 +20,17 @@ public class BlockSpawnManager : MonoBehaviourPun
 
     private void Start()
     {
-        for(int i = 0; i < numberOfObject; i++)
+        if(PhotonNetwork.IsMasterClient)
         {
-            Spawnobjects();
-            //CreateBlock();
-            /*Vector3 randomPosition = GetNonoverlapPos();
-            GameObject clone = Instantiate(Block[Random.Range(0, Block.Length)], randomPosition, Quaternion.identity);*/
+            for (int i = 0; i < numberOfObject; i++)
+            {
+                Spawnobjects();
+                //CreateBlock();
+                /*Vector3 randomPosition = GetNonoverlapPos();
+                GameObject clone = Instantiate(Block[Random.Range(0, Block.Length)], randomPosition, Quaternion.identity);*/
+            }
         }
+
     }
 
     private void Spawnobjects()
@@ -40,6 +44,7 @@ public class BlockSpawnManager : MonoBehaviourPun
             Vector3 spawnPos = new Vector3(xPos, yPos, zPos);
             if (FindCollisions(spawnPos) < 1)
             {
+                Debug.Log("A");
                 PhotonNetwork.Instantiate(Block[Random.Range(0, Block.Length)].name, spawnPos, Quaternion.identity);
                 //GameObject c = Instantiate(Block[Random.Range(0, Block.Length)], spawnPos, Quaternion.identity);
                 b = false;
