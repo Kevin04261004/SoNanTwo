@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 public class BaseBullet : MonoBehaviour
@@ -10,15 +11,28 @@ public class BaseBullet : MonoBehaviour
     [SerializeField] private int BounceTime;
     [SerializeField] private float attackPower = 20;
     private WaitForSeconds waitLivingTime = new WaitForSeconds(5);
-    public GameObject _fromObject;
-
+    private int fromViewID = -1;
+    public PlayerHealth playerHealth;
+    private PhotonView PV;
+    
+    public void SetFromViewID(int i)
+    {
+        PV.RPC(nameof(SetFromViewIDRPC), RpcTarget.All, i);
+    }
+    [PunRPC]
+    private void SetFromViewIDRPC(int i)
+    {
+        fromViewID = i;
+    }
     protected virtual void Awake()
     {
         StartCoroutine(nameof(AliveRoutine));
+        TryGetComponent(out PV);
     }
 
     protected virtual void Update()
     {
+        
         transform.Translate(dir * (_speed * Time.deltaTime));
     }
 
@@ -30,12 +44,13 @@ public class BaseBullet : MonoBehaviour
     protected virtual void OnTriggerEnter(Collider other)
     {
         BounceTime--;
-        if (BounceTime == 0)
+        if (BounceTime <= 0)
         {
             Destroy(gameObject);
         }
 
-        if (other.CompareTag("Player") && other.gameObject != _fromObject)
+        other.TryGetComponent(out PhotonView pv);
+        if (other.CompareTag("Player") && fromViewID != pv.ViewID)// && fromViewID != -1)
         {
             OnPlayerEnter(other);
             Destroy(gameObject);
@@ -44,10 +59,9 @@ public class BaseBullet : MonoBehaviour
 
     protected virtual void OnPlayerEnter(Collider other)
     {
-        if(other.TryGetComponent(out IDamageable damageable))
+        if(other.TryGetComponent(out PlayerHealth playerHealth))
         {
-            damageable.OnDamage(attackPower);
-            print("!!!!!!!!!!!!!!");
+            playerHealth.OnDamage(attackPower);
         }
         else
         {

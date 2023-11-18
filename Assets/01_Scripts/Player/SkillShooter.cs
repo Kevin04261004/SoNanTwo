@@ -57,7 +57,7 @@ public class SkillShooter : MonoBehaviour
         {
             case ESkillType.RedBullet:
                 PhotonNetwork.Instantiate(redBullet_Prefab.name, transform.position, transform.rotation).TryGetComponent(out BaseBullet temp);
-                temp._fromObject = gameObject;
+                temp.SetFromViewID(PV.ViewID);
                 break;
             default:
                 Debug.Assert(true, "default bug!!!");
