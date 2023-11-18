@@ -5,5 +5,9 @@ using Photon.Pun;
 
 public class PlayerHealth : LivingEntity
 {
-
+    public override void Die()
+    {
+        base.Die();
+        FindObjectOfType<GameManager>().DisconnectRoom();
+    }
 }
