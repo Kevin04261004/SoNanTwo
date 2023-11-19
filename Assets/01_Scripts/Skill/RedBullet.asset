@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: RedBullet
   m_EditorClassIdentifier: 
   skillType: 0
-  image: {fileID: 0}
-  info: 
+  image: {fileID: 2800000, guid: c0b29e1fd9dde36468848f74c6c88f57, type: 3}
+  info: "\uD754\uD788 \uBCFC \uC218 \uC788\uB294 \uBE68\uAC04 \uACF5\uC774\uB2E4."
+  count: 0
