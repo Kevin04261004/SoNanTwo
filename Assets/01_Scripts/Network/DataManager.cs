@@ -8,6 +8,14 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
+
+public class InGamePlayer
+{
+    public Player player = null;
+    public bool isReady = false;
+    public GameObject playerObject;
+}
+
 public class DataManager : MonoBehaviour
 { 
     private List<Player> players = new List<Player>();
@@ -24,6 +32,7 @@ public class DataManager : MonoBehaviour
     public Button StartGameButton;
     public GameObject PlayerListImage;
     public GameObject PlayerInfoButtonPrefab;
+    
     [field: SerializeField] public bool _isMyTurn { get; private set; } = true;
 
     private void Awake()
@@ -53,6 +62,10 @@ public class DataManager : MonoBehaviour
             {
                 turnTime = baseTurnTime;
                 EndTurn();
+                if (_isMyTurn)
+                {
+                    
+                }
             }
         }
     }

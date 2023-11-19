@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5256977863432910674}
   - component: {fileID: -242904451154850384}
   - component: {fileID: 7330349765096794842}
+  - component: {fileID: 7873524032543317644}
   m_Layer: 0
   m_Name: HighCube
   m_TagString: Wall
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fbc42780e71135c48bcaf416fffdfc3d, type: 2}
+  - {fileID: 2100000, guid: e87ae93f4b161ad4d823b9960e55f44b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,3 +147,18 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &7873524032543317644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683752750257174354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd0b37ecbae05040b526034dab359cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 200
+  <health>k__BackingField: 0
+  <dead>k__BackingField: 0

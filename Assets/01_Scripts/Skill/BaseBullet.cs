@@ -43,16 +43,22 @@ public class BaseBullet : MonoBehaviour
     }
     protected virtual void OnTriggerEnter(Collider other)
     {
-        BounceTime--;
-        if (BounceTime <= 0)
+        other.TryGetComponent(out PhotonView pv);
+        if (other.CompareTag("Player") && fromViewID != pv.ViewID &&  fromViewID != -1)
         {
+            BounceTime--;
+            OnPlayerEnter(other);
             Destroy(gameObject);
         }
 
-        other.TryGetComponent(out PhotonView pv);
-        if (other.CompareTag("Player") && fromViewID != pv.ViewID)// && fromViewID != -1)
+        if (other.CompareTag("Wall"))
         {
-            OnPlayerEnter(other);
+            BounceTime--;
+            other.TryGetComponent(out IDamageable iDamageable);
+            iDamageable.OnDamage(attackPower);
+        }
+        if (BounceTime <= 0)
+        {
             Destroy(gameObject);
         }
     }

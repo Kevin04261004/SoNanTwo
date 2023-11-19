@@ -24,7 +24,7 @@ public class BlockSpawnManager : MonoBehaviourPun
         {
             for (int i = 0; i < numberOfObject; i++)
             {
-                Spawnobjects();
+                SpawnObjects();
                 //CreateBlock();
                 /*Vector3 randomPosition = GetNonoverlapPos();
                 GameObject clone = Instantiate(Block[Random.Range(0, Block.Length)], randomPosition, Quaternion.identity);*/
@@ -33,7 +33,7 @@ public class BlockSpawnManager : MonoBehaviourPun
 
     }
 
-    private void Spawnobjects()
+    private void SpawnObjects()
     {
         bool b = true;
         while(b)

@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 16
-  BounceTime: 10
+  BounceTime: 1
   attackPower: 20
   playerHealth: {fileID: 0}
 --- !u!54 &1497719139464461491

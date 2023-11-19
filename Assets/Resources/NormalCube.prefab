@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5256977863432910674}
   - component: {fileID: -3751760888431368898}
   - component: {fileID: 3502944107710801369}
+  - component: {fileID: -8730822854128731113}
   m_Layer: 0
   m_Name: NormalCube
   m_TagString: Wall
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 23e5ba17ee3634c47bb372b431ad138e, type: 2}
+  - {fileID: 2100000, guid: c4151470e2c373e4088e04228aa54211, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,3 +147,18 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &-8730822854128731113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683752750257174354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd0b37ecbae05040b526034dab359cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 120
+  <health>k__BackingField: 0
+  <dead>k__BackingField: 0
