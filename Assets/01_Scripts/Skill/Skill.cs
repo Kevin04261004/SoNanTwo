@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Kevin
+
+[CreateAssetMenu(menuName = "Skills",fileName = "Skill")]
+public class Skill : ScriptableObject
 {
-    public abstract class Skill : MonoBehaviour
-    {
-        public abstract void UseSkill(GameObject parent);
-    }   
+    public ESkillType skillType;
+    public Texture2D image;
+    public string info;
+    public int count;
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Image skillsPanel;
+    [SerializeField] private Transform content;
     private int _toggleSpeed = 6000;
     public void ToggleSkillsPanel()
     {
@@ -21,6 +22,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ClearContent()
+    {
+        //while(content)
+    }
     private IEnumerator OpenSkillsPanel()
     {
         while (skillsPanel.rectTransform.position.y < 0)

@@ -9,20 +9,6 @@ public enum ESkillType
     RedBullet, // 기본 불렛
     Size,
 }
-
-[Serializable]
-public class Skill
-{
-    public ESkillType skillType;
-    public int count;
-
-    public Skill(ESkillType skillType, int count)
-    {
-        this.skillType = skillType;
-        this.count = count;
-    }
-}
-
 public class SkillShooter : MonoBehaviour
 {
     private ESkillType curSkillType;
@@ -30,7 +16,6 @@ public class SkillShooter : MonoBehaviour
     private PhotonView PV;
     [SerializeField] private List<Skill> skills = new List<Skill>(); // 이게 인벤임.
     private bool _usedSkill = false;
-
     public void CanUseSkill() // 턴에서 제어.
     {
         _usedSkill = true;
@@ -92,14 +77,21 @@ public class SkillShooter : MonoBehaviour
     {
         foreach (var s in skills)
         {
-            if (s.skillType == skillType)
+            if(s.skillType == skillType)
             {
                 s.count += amount;
                 return;
             }
         }
-        Skill skill = new Skill(skillType, amount);
-        skills.Add(skill);
+    }
+
+    private void UpdateInventory()
+    {
+        
+        for (int i = 0; i < skills.Count; ++i)
+        {
+            
+        }
     }
     
     // 마우스 위치 구하는 거였으나 버려짐
