@@ -52,7 +52,8 @@ public class CameraManager : MonoBehaviour
         {
             if (i.CompareTag("Player"))
             {
-                turnCamera.LookAt = i.transform;       
+                //turnCamera.LookAt = i.transform;
+                turnCamera.Follow = i.transform;
             }
         }
     }

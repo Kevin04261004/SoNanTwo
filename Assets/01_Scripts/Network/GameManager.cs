@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Tooltip("The prefab to use for representing the player")]
     public GameObject playerPrefab;
     [field:SerializeField] public GameObject _myPlayer { get; private set; }
+    private CameraManager _cameraManager;
     private void LoadArena()
     {
         if (!PhotonNetwork.IsMasterClient)
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        _cameraManager = FindObjectOfType<CameraManager>();
         if (playerPrefab == null)
         {
             Debug.LogError("<Color=Red><a>Missing Player Prefab</a></color>");
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         else
         {
             SpawnPlayer();
+            _cameraManager.SetTurnCamera(_myPlayer);
             DataManager.Instance.SetPlayerList();
         }
     }
