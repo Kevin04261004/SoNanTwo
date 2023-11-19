@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
     [Tooltip("The prefab to use for representing the player")]
     public GameObject playerPrefab;
-    private GameObject _myPlayer;
+    [field:SerializeField] public GameObject _myPlayer { get; private set; }
     private void LoadArena()
     {
         if (!PhotonNetwork.IsMasterClient)

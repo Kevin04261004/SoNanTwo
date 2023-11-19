@@ -32,9 +32,10 @@ public class DataManager : MonoBehaviour
     public Button StartGameButton;
     public GameObject PlayerListImage;
     public GameObject PlayerInfoButtonPrefab;
-    
+    private CameraManager _cameraManager;
+    private GameManager _gameManager;
     [field: SerializeField] public bool _isMyTurn { get; private set; } = true;
-
+    private bool camChanged = false;
     private void Awake()
     {
         if(Instance == null)
@@ -48,7 +49,8 @@ public class DataManager : MonoBehaviour
 
         PV = GetComponent<PhotonView>();
         DontDestroyOnLoad(gameObject);
-
+        _cameraManager = FindObjectOfType<CameraManager>();
+        _gameManager = FindObjectOfType<GameManager>();
         turnTime = baseTurnTime;
     }
 
@@ -56,20 +58,22 @@ public class DataManager : MonoBehaviour
     {
         if (gameStart)
         {
+            if (_isMyTurn && !camChanged)
+            {
+                camChanged = true;
+                _cameraManager.SetTurnCamera(_gameManager._myPlayer);
+            }
             turnTime -= Time.deltaTime;
             TurnTime_TMP.text = "TimeTurn : " + Mathf.Round(turnTime);
             if (turnTime < 0)
             {
                 turnTime = baseTurnTime;
                 EndTurn();
-                if (_isMyTurn)
-                {
-                    
-                }
+                camChanged = false;
             }
         }
     }
-
+    
     public int FindMyPlayerIndex()
     {
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; ++i)
