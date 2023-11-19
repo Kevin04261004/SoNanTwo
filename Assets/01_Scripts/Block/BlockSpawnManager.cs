@@ -44,7 +44,6 @@ public class BlockSpawnManager : MonoBehaviourPun
             Vector3 spawnPos = new Vector3(xPos, yPos, zPos);
             if (FindCollisions(spawnPos) < 1)
             {
-                Debug.Log("A");
                 PhotonNetwork.Instantiate(Block[Random.Range(0, Block.Length)].name, spawnPos, Quaternion.identity);
                 //GameObject c = Instantiate(Block[Random.Range(0, Block.Length)], spawnPos, Quaternion.identity);
                 b = false;

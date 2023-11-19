@@ -4,23 +4,41 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-enum ESkillType
+public enum ESkillType
 {
     RedBullet, // 기본 불렛
+    Size,
+}
 
+[Serializable]
+public class Skill
+{
+    public ESkillType skillType;
+    public int count;
+
+    public Skill(ESkillType skillType, int count)
+    {
+        this.skillType = skillType;
+        this.count = count;
+    }
 }
 
 public class SkillShooter : MonoBehaviour
 {
-    private ESkillType skillType;
+    private ESkillType curSkillType;
     [SerializeField] private GameObject redBullet_Prefab;
     private PhotonView PV;
+    [SerializeField] private List<Skill> skills = new List<Skill>(); // 이게 인벤임.
+    private bool _usedSkill = false;
 
+    public void CanUseSkill() // 턴에서 제어.
+    {
+        _usedSkill = true;
+    }
     private void Awake()
     {
-        TryGetComponent<PhotonView>(out PV);
+        TryGetComponent(out PV);
     }
-
     private void Update()
     {
         if (PV.IsMine)
@@ -53,7 +71,7 @@ public class SkillShooter : MonoBehaviour
 
     private void UseSkill()
     {
-        switch (skillType)
+        switch (curSkillType)
         {
             case ESkillType.RedBullet:
                 PhotonNetwork.Instantiate(redBullet_Prefab.name, transform.position, transform.rotation).TryGetComponent(out BaseBullet temp);
@@ -63,8 +81,24 @@ public class SkillShooter : MonoBehaviour
                 Debug.Assert(true, "default bug!!!");
                 break;
         }
+
+        _usedSkill = true;
     }
 
+    public void GetItem(ESkillType skillType, int amount = 1)
+    {
+        foreach (var s in skills)
+        {
+            if (s.skillType == skillType)
+            {
+                s.count += amount;
+                return;
+            }
+        }
+        Skill skill = new Skill(skillType, amount);
+        skills.Add(skill);
+    }
+    
     // 마우스 위치 구하는 거였으나 버려짐
     //private Vector3 GetMousePositon()
     //{

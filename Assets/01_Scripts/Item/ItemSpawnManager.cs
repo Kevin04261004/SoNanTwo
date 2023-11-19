@@ -12,21 +12,21 @@ public class ItemSpawnManager : MonoBehaviour
     [SerializeField] private float MAPLEFT = -19f;
     [SerializeField] private float MAPRIGHT = 19f;
     private Vector3 spawnPos;
-
+    private int _amount = 2;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            for (int i = 0; i < 10; i++)
-            {
-                SpawnItemRandomly();
-            }
+            SpawnItemRandomly();
         }
     }
 
     public void SpawnItemRandomly()
     {
-        spawnPos = new Vector3(Random.Range(MAPLEFT, MAPRIGHT), 5, Random.Range(MAPBOTTOM, MAPTOP));
-        PhotonNetwork.Instantiate(item.name, spawnPos, Quaternion.identity);
+        for (int i = 0; i < _amount; ++i)
+        {
+            spawnPos = new Vector3(Random.Range(MAPLEFT, MAPRIGHT), 5, Random.Range(MAPBOTTOM, MAPTOP));
+            PhotonNetwork.Instantiate(item.name, spawnPos, Quaternion.identity);   
+        }
     }
 }
