@@ -71,10 +71,12 @@ public class SkillShooter : MonoBehaviour
 
     private void UseSkill()
     {
+        var position = transform.position;
+        Vector3 spawnPos = new Vector3(position.x, position.y + 0.75f, position.z);
         switch (curSkillType)
         {
             case ESkillType.RedBullet:
-                PhotonNetwork.Instantiate(redBullet_Prefab.name, transform.position, transform.rotation).TryGetComponent(out BaseBullet temp);
+                PhotonNetwork.Instantiate(redBullet_Prefab.name, spawnPos, transform.rotation).TryGetComponent(out BaseBullet temp);
                 temp.SetFromViewID(PV.ViewID);
                 break;
             default:

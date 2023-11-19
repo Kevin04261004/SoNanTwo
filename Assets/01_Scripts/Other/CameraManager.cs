@@ -9,12 +9,14 @@ public class CameraManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> cams;
     [SerializeField] private CinemachineVirtualCamera turnCamera;
+    private GameManager _gameManager;
     private int index = 0;
     private PhotonView PV;
 
     private void Awake()
     {
         TryGetComponent(out PV);
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()

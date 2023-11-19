@@ -35,7 +35,7 @@ public class DataManager : MonoBehaviour
     private CameraManager _cameraManager;
     private GameManager _gameManager;
     [field: SerializeField] public bool _isMyTurn { get; private set; } = true;
-    private bool camChanged = false;
+    [SerializeField] private bool camChanged = false;
     private void Awake()
     {
         if(Instance == null)

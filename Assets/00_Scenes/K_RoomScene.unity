@@ -2290,6 +2290,7 @@ MonoBehaviour:
   PlayerInfoButtonPrefab: {fileID: 4844532568599867251, guid: aa8ee9cfccd50654cb48a8ac1ee5cb70,
     type: 3}
   <_isMyTurn>k__BackingField: 1
+  camChanged: 0
 --- !u!114 &823042252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3335,7 +3336,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
-  m_BlendUpdateMethod: 1
+  m_BlendUpdateMethod: 0
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
