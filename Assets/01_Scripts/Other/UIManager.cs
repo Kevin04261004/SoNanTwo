@@ -36,19 +36,25 @@ public class UIManager : MonoBehaviour
         {
             if (list.Count > i)
             {
+                ItemCells[i].transform.GetChild(0).gameObject.SetActive(true);   
                 ItemCells[i].TryGetComponent(out Button btn);
-                ItemCells[i].TryGetComponent(out Image color);
-                btn.interactable = true;
-                ItemCells[i].transform.GetChild(0).gameObject.SetActive(true);
+                if (list[i].count > 0)
+                {
+                    btn.interactable = true;
+                }
+                else
+                {
+                    btn.interactable = false;
+                }
                 ItemCells[i].transform.GetChild(0).TryGetComponent(out Image image);
                 image.sprite = list[i].image;
                 ItemCells[i].transform.GetChild(1).TryGetComponent(out TextMeshProUGUI tmp);
-                tmp.text = list[i].count.ToString();   
+                tmp.text = list[i].count.ToString();
+                
             }
             else
             {
                 ItemCells[i].TryGetComponent(out Button btn);
-                ItemCells[i].TryGetComponent(out Image color);
                 ItemCells[i].transform.GetChild(0).gameObject.SetActive(false);
                 btn.interactable = false;
             }

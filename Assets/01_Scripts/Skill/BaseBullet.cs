@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class BaseBullet : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    [SerializeField] protected float _speed;
     private Vector3 dir = Vector3.forward;
-    [SerializeField] private int BounceTime;
-    [SerializeField] private float attackPower = 20;
+    [SerializeField] protected int BounceTime;
+    [SerializeField] protected float attackPower = 20;
     private WaitForSeconds waitLivingTime = new WaitForSeconds(5);
     private int fromViewID = -1;
     public PlayerHealth playerHealth;
-    private PhotonView PV;
+    protected PhotonView PV;
     
     public void SetFromViewID(int i)
     {

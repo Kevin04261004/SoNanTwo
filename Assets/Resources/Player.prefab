@@ -1126,10 +1126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de3805a00ea61b4daafbe7421f3e27b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redBullet_Prefab: {fileID: 3595128772283694078, guid: 11d7a343b3162d4408627968be5651fe,
-    type: 3}
   skills:
   - {fileID: 11400000, guid: 56b5038bd0baca7428f2495e97669566, type: 2}
+  - {fileID: 11400000, guid: 187e9ffe52f94ab4a897f547d1192fa7, type: 2}
 --- !u!114 &1166307029782485447
 MonoBehaviour:
   m_ObjectHideFlags: 0

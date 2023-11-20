@@ -10,4 +10,5 @@ public class Skill : ScriptableObject
     public Sprite image;
     public string info;
     public int count;
+    public GameObject bullet;
 }

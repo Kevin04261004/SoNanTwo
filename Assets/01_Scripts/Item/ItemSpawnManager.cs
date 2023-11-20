@@ -13,13 +13,6 @@ public class ItemSpawnManager : MonoBehaviour
     [SerializeField] private float MAPRIGHT = 19f;
     private Vector3 spawnPos;
     private int _amount = 2;
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SpawnItemRandomly();
-        }
-    }
 
     public void SpawnItemRandomly()
     {

@@ -34,6 +34,8 @@ public class TurnManager : MonoBehaviour
     public GameObject PlayerInfoButtonPrefab;
     private CameraManager _cameraManager;
     private GameManager _gameManager;
+    private ItemSpawnManager _itemSpawnManager;
+    private SkillShooter _skillShooter;
     [field: SerializeField] public bool _isMyTurn { get; private set; } = true;
     [SerializeField] private bool _turnSettingEnd = false;
     private void Awake()
@@ -51,6 +53,7 @@ public class TurnManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         _cameraManager = FindObjectOfType<CameraManager>();
         _gameManager = FindObjectOfType<GameManager>();
+        _itemSpawnManager = FindObjectOfType<ItemSpawnManager>();
         turnTime = baseTurnTime;
     }
 
@@ -72,11 +75,18 @@ public class TurnManager : MonoBehaviour
                 _turnSettingEnd = false;
             }
         }
+        else
+        {
+            _cameraManager.SetTurnCamera(_gameManager._myPlayer);
+        }
     }
 
     public void TurnSetting()
     {
         _cameraManager.SetTurnCamera(_gameManager._myPlayer);
+        _itemSpawnManager.SpawnItemRandomly();
+        _gameManager._myPlayer.TryGetComponent(out _skillShooter);
+        _skillShooter.CanUseSkill();
     }
     public int FindMyPlayerIndex()
     {
