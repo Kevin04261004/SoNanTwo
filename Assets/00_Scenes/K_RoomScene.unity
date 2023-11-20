@@ -339,7 +339,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 29728802}
   m_OnClick:
     m_PersistentCalls:
@@ -461,7 +461,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 30585299}
   m_OnClick:
     m_PersistentCalls:
@@ -731,7 +731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &45127460
 RectTransform:
   m_ObjectHideFlags: 0
@@ -819,6 +819,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillsPanel: {fileID: 409196030}
+  content: {fileID: 0}
+  ItemCells:
+  - {fileID: 1011554097}
+  - {fileID: 1395979231}
+  - {fileID: 1736642017}
+  - {fileID: 382709867}
+  - {fileID: 1374933345}
+  - {fileID: 1197770286}
+  - {fileID: 30585296}
+  - {fileID: 29728799}
+  - {fileID: 965975274}
+  - {fileID: 2125258965}
+  - {fileID: 653805794}
+  - {fileID: 1224928879}
 --- !u!4 &63356339
 Transform:
   m_ObjectHideFlags: 0
@@ -1028,7 +1042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &105132040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1103,7 +1117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &123549592
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1313,7 +1327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &208403386
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1753,7 +1767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &287798222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1900,7 +1914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &358418256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2172,7 +2186,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 382709870}
   m_OnClick:
     m_PersistentCalls:
@@ -3791,7 +3805,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 653805797}
   m_OnClick:
     m_PersistentCalls:
@@ -3851,7 +3865,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &663151552
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3961,7 +3975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &694938908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4173,7 +4187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &749146206
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4191,7 +4205,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 75, y: 75}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &749146207
 MonoBehaviour:
@@ -4206,14 +4220,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4651,7 +4665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &768176359
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4868,7 +4882,7 @@ MonoBehaviour:
   PlayerInfoButtonPrefab: {fileID: 4844532568599867251, guid: aa8ee9cfccd50654cb48a8ac1ee5cb70,
     type: 3}
   <_isMyTurn>k__BackingField: 1
-  camChanged: 0
+  _turnSettingEnd: 0
 --- !u!114 &823042252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5415,7 +5429,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 965975277}
   m_OnClick:
     m_PersistentCalls:
@@ -5642,7 +5656,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1011554100}
   m_OnClick:
     m_PersistentCalls:
@@ -5987,7 +6001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1080084963
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6576,7 +6590,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1197770289}
   m_OnClick:
     m_PersistentCalls:
@@ -6698,7 +6712,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1224928882}
   m_OnClick:
     m_PersistentCalls:
@@ -7190,7 +7204,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1374933348}
   m_OnClick:
     m_PersistentCalls:
@@ -7447,7 +7461,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1395979234}
   m_OnClick:
     m_PersistentCalls:
@@ -8157,7 +8171,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1597741484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8501,7 +8515,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1736642020}
   m_OnClick:
     m_PersistentCalls:
@@ -9538,7 +9552,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2125258968}
   m_OnClick:
     m_PersistentCalls:

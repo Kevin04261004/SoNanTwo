@@ -158,7 +158,7 @@ namespace StarterAssets
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
-            if (DataManager.Instance._isMyTurn)
+            if (TurnManager.Instance._isMyTurn)
             {
                 Move();     
             }
@@ -316,7 +316,7 @@ namespace StarterAssets
                     _verticalVelocity = -2f;
                 }
 
-                if (!DataManager.Instance._isMyTurn)
+                if (!TurnManager.Instance._isMyTurn)
                 {
                     return;
                 }

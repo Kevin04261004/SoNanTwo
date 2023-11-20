@@ -27,7 +27,7 @@ public class KItem : MonoBehaviour
         {
             other.TryGetComponent(out skillShooter);
             skillShooter.GetItem(type,amount);
-           PhotonNetwork.Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

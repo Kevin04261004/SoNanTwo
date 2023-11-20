@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             SpawnPlayer();
             _cameraManager.SetTurnCamera(_myPlayer);
-            DataManager.Instance.SetPlayerList();
+            TurnManager.Instance.SetPlayerList();
         }
     }
 
@@ -72,11 +72,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
             LoadArena();
         }
-        DataManager.Instance.SetPlayerList();
+        TurnManager.Instance.SetPlayerList();
     }
     private void SpawnPlayer()
     {
         _myPlayer = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.up, Quaternion.identity);
-        DataManager.Instance.SetPlayerList();
+        TurnManager.Instance.SetPlayerList();
     }
 }

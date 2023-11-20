@@ -16,7 +16,7 @@ public class InGamePlayer
     public GameObject playerObject;
 }
 
-public class DataManager : MonoBehaviour
+public class TurnManager : MonoBehaviour
 { 
     private List<Player> players = new List<Player>();
     private int _turn = -1;
@@ -25,7 +25,7 @@ public class DataManager : MonoBehaviour
     private PhotonView PV;
     private bool gameStart = false;
     public float baseTurnTime = 18f;
-    public static DataManager Instance;
+    public static TurnManager Instance;
     public TextMeshProUGUI Round_TMP;
     public TextMeshProUGUI TurnTime_TMP;
     public Button NextTurnButton;
@@ -35,7 +35,7 @@ public class DataManager : MonoBehaviour
     private CameraManager _cameraManager;
     private GameManager _gameManager;
     [field: SerializeField] public bool _isMyTurn { get; private set; } = true;
-    [SerializeField] private bool camChanged = false;
+    [SerializeField] private bool _turnSettingEnd = false;
     private void Awake()
     {
         if(Instance == null)
@@ -58,10 +58,10 @@ public class DataManager : MonoBehaviour
     {
         if (gameStart)
         {
-            if (_isMyTurn && !camChanged)
+            if (_isMyTurn && !_turnSettingEnd) // 턴 시작.
             {
-                camChanged = true;
-                _cameraManager.SetTurnCamera(_gameManager._myPlayer);
+                _turnSettingEnd = true;
+                TurnSetting();
             }
             turnTime -= Time.deltaTime;
             TurnTime_TMP.text = "TimeTurn : " + Mathf.Round(turnTime);
@@ -69,11 +69,15 @@ public class DataManager : MonoBehaviour
             {
                 turnTime = baseTurnTime;
                 EndTurn();
-                camChanged = false;
+                _turnSettingEnd = false;
             }
         }
     }
-    
+
+    public void TurnSetting()
+    {
+        _cameraManager.SetTurnCamera(_gameManager._myPlayer);
+    }
     public int FindMyPlayerIndex()
     {
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; ++i)

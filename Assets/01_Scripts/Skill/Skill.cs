@@ -7,7 +7,7 @@ using UnityEngine;
 public class Skill : ScriptableObject
 {
     public ESkillType skillType;
-    public Texture2D image;
+    public Sprite image;
     public string info;
     public int count;
 }

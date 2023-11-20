@@ -1128,7 +1128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redBullet_Prefab: {fileID: 3595128772283694078, guid: 11d7a343b3162d4408627968be5651fe,
     type: 3}
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: 56b5038bd0baca7428f2495e97669566, type: 2}
 --- !u!114 &1166307029782485447
 MonoBehaviour:
   m_ObjectHideFlags: 0

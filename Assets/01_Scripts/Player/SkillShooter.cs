@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum ESkillType
@@ -16,13 +17,19 @@ public class SkillShooter : MonoBehaviour
     private PhotonView PV;
     [SerializeField] private List<Skill> skills = new List<Skill>(); // 이게 인벤임.
     private bool _usedSkill = false;
+    private UIManager _uiManager;
     public void CanUseSkill() // 턴에서 제어.
     {
         _usedSkill = true;
     }
     private void Awake()
     {
+        if (skills.Count != (int)ESkillType.Size)
+        {
+            Debug.Assert(true,"게임 시작 전에 아이템 리스트에 넣어주세요.");
+        }
         TryGetComponent(out PV);
+        _uiManager = FindObjectOfType<UIManager>();
     }
     private void Update()
     {
@@ -62,15 +69,18 @@ public class SkillShooter : MonoBehaviour
         switch (curSkillType)
         {
             case ESkillType.RedBullet:
-                PhotonNetwork.Instantiate(redBullet_Prefab.name, spawnPos, transform.rotation).TryGetComponent(out BaseBullet temp);
-                temp.SetFromViewID(PV.ViewID);
+                if (skills[(int)ESkillType.RedBullet].count > 0)
+                {
+                    PhotonNetwork.Instantiate(redBullet_Prefab.name, spawnPos, transform.rotation).TryGetComponent(out BaseBullet temp);
+                    temp.SetFromViewID(PV.ViewID);   
+                }
                 break;
             default:
                 Debug.Assert(true, "default bug!!!");
                 break;
         }
-
         _usedSkill = true;
+        _uiManager.UpdateInven(ref skills);
     }
 
     public void GetItem(ESkillType skillType, int amount = 1)
@@ -80,20 +90,11 @@ public class SkillShooter : MonoBehaviour
             if(s.skillType == skillType)
             {
                 s.count += amount;
-                return;
             }
         }
+        _uiManager.UpdateInven(ref skills);
     }
 
-    private void UpdateInventory()
-    {
-        
-        for (int i = 0; i < skills.Count; ++i)
-        {
-            
-        }
-    }
-    
     // 마우스 위치 구하는 거였으나 버려짐
     //private Vector3 GetMousePositon()
     //{
