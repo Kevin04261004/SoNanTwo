@@ -85,8 +85,8 @@ public class TurnManager : MonoBehaviour
     {
         _cameraManager.SetTurnCamera(_gameManager._myPlayer);
         _itemSpawnManager.SpawnItemRandomly();
-        _gameManager._myPlayer.TryGetComponent(out _skillShooter);
-        _skillShooter.CanUseSkill();
+        // _gameManager._myPlayer.TryGetComponent(out _skillShooter);
+        // _skillShooter.CanUseSkill();
     }
     public int FindMyPlayerIndex()
     {

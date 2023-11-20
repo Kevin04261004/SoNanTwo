@@ -18,10 +18,10 @@ public class SkillShooter : MonoBehaviour
     [SerializeField] private List<Skill> skills = new List<Skill>(); // 이게 인벤임.
     private bool _usedSkill = true;
     private UIManager _uiManager;
-    public void CanUseSkill() // 턴에서 제어.
-    {
-        _usedSkill = false;
-    }
+    // public void CanUseSkill() // 턴에서 제어.
+    // {
+    //     _usedSkill = false;
+    // }
 
     public void ChangeCurSkillType(ESkillType skillType)
     {
@@ -69,10 +69,10 @@ public class SkillShooter : MonoBehaviour
 
     private void UseSkill()
     {
-        if (_usedSkill)
-        {
-            return;
-        }
+        // if (_usedSkill)
+        // {
+        //     return;
+        // }
         var position = transform.position;
         Vector3 spawnPos = new Vector3(position.x, position.y + 0.75f, position.z);
         switch (curSkillType)
@@ -83,7 +83,7 @@ public class SkillShooter : MonoBehaviour
                     skills[(int)ESkillType.RedBullet].count--;
                     PhotonNetwork.Instantiate(skills[(int)ESkillType.RedBullet].bullet.name, spawnPos, transform.rotation).TryGetComponent(out BaseBullet temp);
                     temp.SetFromViewID(PV.ViewID);
-                    _usedSkill = true;
+                    //_usedSkill = true;
                 }
                 break;
             case ESkillType.BlueBullet:
@@ -92,7 +92,7 @@ public class SkillShooter : MonoBehaviour
                     skills[(int)ESkillType.BlueBullet].count--;
                     PhotonNetwork.Instantiate(skills[(int)ESkillType.BlueBullet].bullet.name, spawnPos, transform.rotation).TryGetComponent(out BaseBullet temp);
                     temp.SetFromViewID(PV.ViewID);
-                    _usedSkill = true;
+                   // _usedSkill = true;
                 }
                 break;
             default:
